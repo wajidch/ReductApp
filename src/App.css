@@ -1,0 +1,191 @@
+/* #00c452 */
+
+.App {
+  display: flex;
+  flex-direction: row;
+  min-width: 500px !important;
+  height:100% !important
+}
+.AppVidSub {
+  display: flex;
+  flex:1;
+  flex-direction: row;
+}
+.AppVid {
+  display: flex;
+  min-width: 500px !important;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+/* The actual timeline (the vertical ruler) */
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90%;
+}
+
+/* The actual timeline (the vertical ruler) */
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  background-color: silver;
+  top: 0;
+  bottom: 0;
+  margin-left: -3px;
+  left: 31px;
+}
+
+/* The circles on the timeline */
+
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: black;
+  border: 4px solid silver;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* The actual content */
+
+.content {
+  padding-left: 50px;
+  padding-top: 10px;
+  position: relative;
+}
+
+/* Container around content */
+
+.container {
+  position: relative;
+  background-color: inherit;
+  width: 100%;
+}
+
+.left::after {
+  left: 15px;
+}
+
+.activeBtn {
+  padding: 5px 10px;
+  background-color: silver;
+  font-weight: bold;
+  color: black;
+  border: 1px solid silver;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.disactiveBtn {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: black;
+  margin-left: 10px;
+}
+
+.dwrLink {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1em;
+  padding: 10px;
+  margin: 10px 0px !important;
+}
+
+.noOverflow {
+  overflow: hidden !important;
+}
+
+.dwrNav {
+  display: flex;
+  transition: all 300ms;
+  max-width: 200px;
+  height:100% !important;
+}
+
+.dwrLink:hover {
+  background-image: linear-gradient(to right, rgba(0, 196, 82, 0.3), rgba(0, 0, 0, 0.4));
+}
+
+.show {
+  display: flex;
+  width: 100%;
+  height: 100% !important;
+}
+
+.hide {
+  width: 0%;
+  padding: 0px !important;
+}
+
+.dwrNavIcon {
+  color: #00c452 !important;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.clicked {
+  opacity: 0.5;
+}
+
+.customSelect {
+  background-color: #00c452 !important;
+  border: 1px solid black !important;
+  color: white !important;
+}
+
+.customSelect option {
+  color: black !important;
+  background-color: white !important;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+  .hideSM {
+    display: none;
+  }
+  .navDividerDiv {
+    display: none;
+  }
+  .smVideos {
+    flex-direction: column !important;
+  }
+  .itemCardSm {
+    width: 100% !important;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .smSearchCon {
+    padding-left: 20px !important;
+  }
+  .show {
+    padding: 10px !important;
+  }
+  .dwrLink {
+    font-size: 0.9em;
+  }
+  .smVidTitle {
+    font-size: medium;
+  }
+  .AppVidSub {
+    flex-direction: column;
+  }
+  .vidBtns{
+    flex-direction: column !important;
+  }
+}
