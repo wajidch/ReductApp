@@ -13,6 +13,7 @@ export function ItemCard(props) {
             flexDirection: 'row',
             margin: 10,
             boxShadow: '0px 4px 5px silver',
+            width: 100 + "%"
         },
         img: {
             width: 100 + "%",
@@ -22,8 +23,8 @@ export function ItemCard(props) {
         imgCon: {
             width: 90,
             height: 90,
-            minWidth:90,
-            minHeight:90,
+            minWidth: 90,
+            minHeight: 90,
             borderRadius: 10,
             overflow: 'hidden',
             position: 'relative'
@@ -56,25 +57,28 @@ export function ItemCard(props) {
             fontSize: 0.8 + 'em',
             margin: 0,
         },
-        linkStyle:{
-            display:'flex',
-            color:'black',
-            textDecoration:'none',
-            width:100+"% !important"
+        linkStyle: {
+            display: 'flex',
+            color: 'black',
+            textDecoration: 'none',
+            width: 100 + "%"
         }
     }
+    let limit = 10;
     return (
-        <Link to={props.to} style={{...style.linkStyle,...props.linkStyle}}>
-        <div style={{ ...style.container, ...props.containerStyle }} className={props.containerClassName}>
-            <div style={style.imgCon}>
-                <img src={props.src} style={style.img} />
-                <h1 style={style.imgTxt}>{props.size}</h1>
-            </div>
-            <div style={style.textCon}>
-                <h4 style={style.title}>{props.title}</h4>
-                <p style={style.description}>{props.description}</p>
-            </div>
-        </div>
+        <Link to={props.to} style={{ ...style.linkStyle, ...props.linkStyle }} >
+            <abbr title={props.title.length > limit ? props.title : null} style={{ textDecoration: 'none',display:'flex',width:100+'%' }}>
+                <div style={{ ...style.container, ...props.containerStyle }} className={props.containerClassName}>
+                    <div style={style.imgCon}>
+                        <img src={props.src} style={style.img} />
+                        <h1 style={style.imgTxt}>{props.size}</h1>
+                    </div>
+                    <div style={style.textCon}>
+                        <h4 style={style.title}>{props.title ? props.title.length > limit ? props.title.slice(0, limit) + "..." : props.title : null}</h4>
+                        <p style={style.description}>{props.description}</p>
+                    </div>
+                </div>
+            </abbr>
         </Link>
     );
 }
@@ -314,9 +318,9 @@ export function SideDrawer(props) {
             backgroundColor: '#000',
             flexDirection: 'column',
             padding: 40,
-            minHeight:100+"vh",
+            minHeight: 100 + "vh",
             height: 100 + '%',
-            margin:0
+            margin: 0
         },
     }
     return (
@@ -402,39 +406,39 @@ export function PeopleCard(props) {
             display: 'flex',
             flexDirection: 'column',
             marginLeft: 10,
-            padding:5
+            padding: 5
         },
-        text:{
-            fontSize:1+'em',
-            fontWeight:'normal',
-            margin:0,
+        text: {
+            fontSize: 1 + 'em',
+            fontWeight: 'normal',
+            margin: 0,
         },
-        greenTxt:{
-            fontSize:0.8+'em',
-            fontWeight:'normal',
-            margin:0,
-            color:'#00c452'
+        greenTxt: {
+            fontSize: 0.8 + 'em',
+            fontWeight: 'normal',
+            margin: 0,
+            color: '#00c452'
         },
-        redTxt:{
-            fontSize:0.8+'em',
-            fontWeight:'normal',
-            margin:0,
-            color:'red'
+        redTxt: {
+            fontSize: 0.8 + 'em',
+            fontWeight: 'normal',
+            margin: 0,
+            color: 'red'
         }
     }
     return (
         <div style={style.container}>
             <label class="checkboxContainer">
-                    <input type="checkbox" />
-                    <span class="checkmark" />
+                <input type="checkbox" />
+                <span class="checkmark" />
             </label>
             <img src={props.src} style={style.img} />
             <div style={style.textCon}>
                 <h3 style={style.text}>{props.name}</h3>
                 <h3 style={style.text}>{props.frames}</h3>
-                <div style={{display:"flex",flexDirection:'row',alignItems:'center'}}>
-                <h3 style={props.visible ? style.greenTxt : style.redTxt}>{props.visible ? "Visible" : "Not Visible"}</h3>
-                <i style={{marginLeft:5,fontSize:'larger'}} className="fa fa-volume-up"></i>
+                <div style={{ display: "flex", flexDirection: 'row', alignItems: 'center' }}>
+                    <h3 style={props.visible ? style.greenTxt : style.redTxt}>{props.visible ? "Visible" : "Not Visible"}</h3>
+                    <i style={{ marginLeft: 5, fontSize: 'larger' }} className="fa fa-volume-up"></i>
                 </div>
             </div>
         </div>
