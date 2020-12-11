@@ -7,6 +7,7 @@ import {
 
 import VideoScreen from './Screens/VideoScreen'
 import PlayVideo from './Screens/PlayVideo'
+import AddVideo from './Screens/AddVideo'
 
 export default function App() {
   return(
@@ -18,6 +19,9 @@ export default function App() {
       <Route path="/video">
         <PlayVideo />
       </Route>
+      <Router path="/addVideo">
+        <AddVideo />
+      </Router>
     </Switch>
   </Router>
   )

@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   min-width: 500px !important;
-  height:100% !important
+  height:100% !important;
 }
 .AppVidSub {
   display: flex;
@@ -84,6 +84,52 @@
   border: 1px solid silver;
   border-radius: 5px;
   margin-left: 10px;
+}
+
+.addBtn {
+  padding: 5px 10px;
+  background-color: silver;
+  font-weight: bold;
+  color: black;
+  border: 1px solid silver;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.addVideoForm {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.videoInput {
+  border: 1px solid black;
+  padding: 2%;
+  width: 30%;
+  text-align: center;
+  color: black;
+}
+
+.uploadBtn{
+  width: 25%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 2%;
+  background-color: #3E87F8;
+  color: white;
+  border: 1px solid #3E87F8;
+}
+
+.resultBtn {
+  width: 20%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 2%;
+  background-color: #2BBBAC;
+  color: white;
+  border: 1px solid #2BBBAC
 }
 
 .disactiveBtn {

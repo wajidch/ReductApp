@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import '../App.css';
 import { ItemCard, CaseCard, VideoCard, Nav, CategoryTextRow, SideDrawer } from '../Components'
 import image from '../img.jpg'
-
+import { Link } from "react-router-dom";
 class VideoScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      shown: false,
+      shown: true,
       videoData: []
     };
     this.setShown = this.setShown.bind(this);
@@ -41,6 +41,27 @@ class VideoScreen extends Component {
   render() {
     console.log(this.state.videoData)
     let recentVideos = [
+      {
+        src: image,
+        title: "654321.mp4",
+        description: "5 hours ago",
+        size: "3 MB",
+        to: "/video"
+      },
+      {
+        src: image,
+        title: "123456.mp4",
+        description: "10 hours ago",
+        size: "10 MB",
+        to: "/video"
+      },
+      {
+        src: image,
+        title: "4145.mp4",
+        description: "7 hours ago",
+        size: "4 MB",
+        to: "/video"
+      },
       {
         src: image,
         title: "654321.mp4",
@@ -185,14 +206,18 @@ class VideoScreen extends Component {
 
 
           {/* Recent */}
+          <br />
+          <Link to="/addVideo" className="addBtn hover"> Add Video</Link>
+          <br />
           <CategoryTextRow title="Recent Videos" rightTxt="View All" />
           <div style={{ display: 'flex', flexDirection: 'row' }} className="smVideos">
             {this.state.videoData.length ? this.state.videoData.map((i, index) => {
               if (index < 3) {
-                return <ItemCard containerClassName="itemCardSm" containerStyle={{ width: 100 + "%" }}
+                return <ItemCard linkStyle={{ width: 100 + "%",display:'flex',flex:1 }} containerClassName="itemCardSm" containerStyle={{ width: 100 + "%",display:'flex' }}
                   src={image} title={i.Video} description={i.Status} size={"3 MB"} to={"/video"} />
               }
-            })
+            }
+            )
               : null}
           </div>
 
