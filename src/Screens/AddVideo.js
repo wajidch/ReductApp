@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import '../App.css';
 import { Nav, SideDrawer } from '../Components'
 import image from '../img.jpg'
+<<<<<<< HEAD
+=======
+import { Link } from "react-router-dom";
+>>>>>>> 09cc3c677718d047b320c0d8c5d7fde572751a68
 class VideoScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       shown: true,
+=======
+      shown: false,
+>>>>>>> 09cc3c677718d047b320c0d8c5d7fde572751a68
       videoData: []
     };
     this.setShown = this.setShown.bind(this);
@@ -39,6 +47,125 @@ class VideoScreen extends Component {
   }
   render() {
     console.log(this.state.videoData)
+<<<<<<< HEAD
+=======
+    let recentVideos = [
+      {
+        src: image,
+        title: "654321.mp4",
+        description: "5 hours ago",
+        size: "3 MB",
+        to: "/video"
+      },
+      {
+        src: image,
+        title: "123456.mp4",
+        description: "10 hours ago",
+        size: "10 MB",
+        to: "/video"
+      },
+      {
+        src: image,
+        title: "4145.mp4",
+        description: "7 hours ago",
+        size: "4 MB",
+        to: "/video"
+      },
+      {
+        src: image,
+        title: "654321.mp4",
+        description: "5 hours ago",
+        size: "3 MB",
+        to: "/video"
+      },
+      {
+        src: image,
+        title: "123456.mp4",
+        description: "10 hours ago",
+        size: "10 MB",
+        to: "/video"
+      },
+      {
+        src: image,
+        title: "4145.mp4",
+        description: "7 hours ago",
+        size: "4 MB",
+        to: "/video"
+      },
+    ]
+
+    let Cases = [
+      {
+        title: "ID 2002",
+        videos: 10,
+        private: true,
+      },
+      {
+        title: "ID 23",
+        videos: 13,
+        shared: true
+      },
+      {
+        title: "ID 2402",
+        videos: 5,
+        private: true
+      },
+      {
+        title: "ID 2002",
+        videos: 10,
+        private: true,
+      },
+      {
+        title: "ID 23",
+        videos: 13,
+        shared: true
+      },
+      {
+        title: "ID 2402",
+        videos: 5,
+        private: true
+      },
+    ]
+
+    let myVideos = [
+      {
+        type: "MP4",
+        name: "313124-1",
+        size: "19 MB",
+        status: "In Progress",
+        time: "Today"
+      },
+      {
+        type: "MP4",
+        name: "313124-1",
+        size: "19 MB",
+        status: "In Progress",
+        time: "Today"
+      }, {
+        type: "MP4",
+        name: "313124-1",
+        size: "19 MB",
+        status: "In Progress",
+        time: "Today"
+      }, {
+        type: "MP4",
+        name: "313124-1",
+        size: "19 MB",
+        status: "In Progress",
+        time: "Today"
+      }, {
+        type: "MP4",
+        name: "313124-1",
+        size: "19 MB",
+        status: "In Progress",
+        time: "Today"
+      },
+    ]
+
+
+    
+
+>>>>>>> 09cc3c677718d047b320c0d8c5d7fde572751a68
     return (
       <div className="App">
         <SideDrawer shown={this.state.shown} />
