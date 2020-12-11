@@ -5,7 +5,7 @@ import { useState } from 'react';
 import image from '../img.jpg'
 
 function PlayVideo() {
-  const [shown, setShown] = useState(false)
+  const [shown, setShown] = useState(true)
   return (
     <div className="AppVid">
       <SideDrawer shown={shown} />
