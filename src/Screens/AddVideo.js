@@ -41,7 +41,7 @@ class VideoScreen extends Component {
       redirect: 'follow'
     };
 
-    fetch("https://aws-dec.xcellence.tech/vr_api/redact/video_redact", requestOptions)
+    fetch("https://prod2.authenticity.ai/vr_api/redact/video_redact", requestOptions)
       .then(response => response.text())
       .then(result => {
         let data = JSON.parse(result)
@@ -60,24 +60,22 @@ onDownloadFile(){
   var urlencoded = new URLSearchParams();
   urlencoded.append("userid", "48886ACD");
   urlencoded.append("filename", "IMG_8222_redact.mp4");
-
   var requestOptions = {
-   
+    method: 'POST',
     headers: myHeaders,
     body: urlencoded,
+    redirect: 'follow'
   };
 
+  fetch("https://prod2.authenticity.ai/vr_api/redact/download_result", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      let data = JSON.parse(result)
+      console.log("data",data)
+     
+    })
+    .catch(error => console.log('error', error));
  
-
-  
-  axios.get(`https://aws-dec.xcellence.tech/vr_api/redact/download_result`,{
-    requestOptions
-})
-      .then(res => {
-        const data = res;
-
-        console.log("data",data);
-            })
 }
   render() {
     return (

@@ -30,7 +30,7 @@ class VideoScreen extends Component {
       redirect: 'follow'
     };
 
-    fetch("https://aws-dec.xcellence.tech/vr_api/redact/get_video_list", requestOptions)
+    fetch("https://prod2.authenticity.ai/vr_api/redact/get_video_list", requestOptions)
       .then(response => response.text())
       .then(result => {
         let data = JSON.parse(result)
