@@ -12,6 +12,7 @@ class VideoScreen extends Component {
       videoData: []
     };
     this.setShown = this.setShown.bind(this);
+    this.downloadfile = this.downloadfile.bind(this);
   }
   setShown(value) {
     this.setState({ shown: value })
@@ -37,6 +38,36 @@ class VideoScreen extends Component {
         this.setState({ videoData: data.message })
       })
       .catch(error => console.log('error', error));
+  }
+  downloadfile(video){
+    console.log("video",video)
+    var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+  var urlencoded = new URLSearchParams();
+  urlencoded.append("userid", "48886ACD");
+  urlencoded.append("filename", video);
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: urlencoded,
+    redirect: 'follow'
+  };
+
+  fetch("https://prod2.authenticity.ai/vr_api/redact/download_result", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      let data = JSON.parse(result)
+      console.log("data",data);
+      window.location = '/video';
+     
+    })
+    .catch(error =>{
+      window.location = '/video';
+
+      console.log('error', error)
+    } );
+ 
   }
   render() {
     console.log(this.state.videoData)
@@ -118,40 +149,40 @@ class VideoScreen extends Component {
       },
     ]
 
-    let myVideos = [
-      {
-        type: "MP4",
-        name: "313124-1",
-        size: "19 MB",
-        status: "In Progress",
-        time: "Today"
-      },
-      {
-        type: "MP4",
-        name: "313124-1",
-        size: "19 MB",
-        status: "In Progress",
-        time: "Today"
-      }, {
-        type: "MP4",
-        name: "313124-1",
-        size: "19 MB",
-        status: "In Progress",
-        time: "Today"
-      }, {
-        type: "MP4",
-        name: "313124-1",
-        size: "19 MB",
-        status: "In Progress",
-        time: "Today"
-      }, {
-        type: "MP4",
-        name: "313124-1",
-        size: "19 MB",
-        status: "In Progress",
-        time: "Today"
-      },
-    ]
+    // let myVideos = [
+    //   {
+    //     type: "MP4",
+    //     name: "313124-1",
+    //     size: "19 MB",
+    //     status: "In Progress",
+    //     time: "Today"
+    //   },
+    //   {
+    //     type: "MP4",
+    //     name: "313124-1",
+    //     size: "19 MB",
+    //     status: "In Progress",
+    //     time: "Today"
+    //   }, {
+    //     type: "MP4",
+    //     name: "313124-1",
+    //     size: "19 MB",
+    //     status: "In Progress",
+    //     time: "Today"
+    //   }, {
+    //     type: "MP4",
+    //     name: "313124-1",
+    //     size: "19 MB",
+    //     status: "In Progress",
+    //     time: "Today"
+    //   }, {
+    //     type: "MP4",
+    //     name: "313124-1",
+    //     size: "19 MB",
+    //     status: "In Progress",
+    //     time: "Today"
+    //   },
+    // ]
 
 
 
@@ -192,8 +223,10 @@ class VideoScreen extends Component {
         color: '#000',
         margin: 0
       },
+    
     }
 
+  
     return (
       <div className="App">
         <SideDrawer shown={this.state.shown} />
@@ -237,8 +270,9 @@ class VideoScreen extends Component {
 
             <i style={style.tableLastIcon} className="fa fa-arrow-down"></i>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {myVideos.map((i) => <VideoCard type={i.type} name={i.name} size={i.size} status={i.status} time={i.time} />)}
+          <div   style={{ display: 'flex', flexDirection: 'column' }}>
+            {this.state.videoData.map((i) =><button style={{border: 'none',
+    background: 'transparent',cursor:'pointer'}} onClick={() => this.downloadfile(i.Video)}><VideoCard type={"MP4"}   name={i.Video} size={"3MB"} status={i.Status} time={"Today"}  /></button> )}
           </div>
 
         </div>
