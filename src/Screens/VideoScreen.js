@@ -3,6 +3,7 @@ import '../App.css';
 import { ItemCard, CaseCard, VideoCard, Nav, CategoryTextRow, SideDrawer } from '../Components'
 import image from '../img.jpg'
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router"
 class VideoScreen extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +42,7 @@ class VideoScreen extends Component {
   }
   downloadfile(video){
     console.log("video",video)
+    // this.props.history.push('/video');
     var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -53,17 +55,17 @@ class VideoScreen extends Component {
     body: urlencoded,
     redirect: 'follow'
   };
-
   fetch("https://prod2.authenticity.ai/vr_api/redact/download_result", requestOptions)
     .then(response => response.text())
     .then(result => {
       let data = JSON.parse(result)
       console.log("data",data);
-      window.location = '/video';
+     
+    
      
     })
     .catch(error =>{
-      window.location = '/video';
+    
 
       console.log('error', error)
     } );
@@ -272,7 +274,7 @@ class VideoScreen extends Component {
           </div>
           <div   style={{ display: 'flex', flexDirection: 'column' }}>
             {this.state.videoData.map((i) =><button style={{border: 'none',
-    background: 'transparent',cursor:'pointer'}} onClick={() => this.downloadfile(i.Video)}><VideoCard type={"MP4"}   name={i.Video} size={"3MB"} status={i.Status} time={"Today"}  /></button> )}
+    background: 'transparent',cursor:'pointer'}}  onClick={() => this.downloadfile(i.Video)}><VideoCard type={"MP4"}   name={i.Video} size={(i.size/1024).toFixed(0)+" MB"} status={i.Status} time={"Today"}  /></button> )}
           </div>
 
         </div>
